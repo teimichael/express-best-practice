@@ -1,7 +1,7 @@
 import {existsSync, mkdirSync} from 'fs';
 import {join} from 'path';
 import winston from 'winston';
-import winstonDaily from 'winston-daily-rotate-file';
+import 'winston-daily-rotate-file';
 import {env} from "./env";
 
 const logDir: string = join(__dirname, env.log.dir);
@@ -25,22 +25,22 @@ const logger = winston.createLogger({
     ),
     transports: [
         // Debug log setting
-        new winstonDaily({
+        new winston.transports.DailyRotateFile({
             level: 'debug',
             datePattern: 'YYYY-MM-DD',
             dirname: logDir + '/debug',
             filename: `%DATE%.log`,
-            maxFiles: 30,
+            maxFiles: '30d',
             json: false,
             zippedArchive: true,
         }),
         // Error log setting
-        new winstonDaily({
+        new winston.transports.DailyRotateFile({
             level: 'error',
             datePattern: 'YYYY-MM-DD',
             dirname: logDir + '/error',
             filename: `%DATE%.log`,
-            maxFiles: 30,
+            maxFiles: '30d',
             handleExceptions: true,
             json: false,
             zippedArchive: true,

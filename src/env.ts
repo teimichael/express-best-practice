@@ -7,6 +7,7 @@ export const env = {
     node: {
         env: process.env.NODE_ENV || 'development'
     },
+    debug: process.env.NODE_ENV === 'development',
     app: {
         port: process.env.APP_PORT ? parseInt(process.env.APP_PORT) : 8000,
         controllers: process.env.APP_CONTROLLER_PATH || ''

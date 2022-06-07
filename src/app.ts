@@ -11,6 +11,7 @@ import {routingControllersToSpec} from "routing-controllers-openapi";
 import {validationMetadatasToSchemas} from "class-validator-jsonschema";
 import morgan from "morgan";
 import {logger, stream} from "./logger";
+import {ErrorHandler} from "./ErrorHandler";
 
 class App {
     private app: Application
@@ -21,6 +22,8 @@ class App {
             cors: true,
             classTransformer: true,
             controllers: [path.join(__dirname + '/controllers/*.js')],
+            middlewares: [ErrorHandler],
+            defaultErrorHandler: false
         });
         this.initializeCore();
         this.initializeSwagger();

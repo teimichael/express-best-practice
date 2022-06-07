@@ -2,7 +2,7 @@ import {JsonController, Param, Body, Get, Post} from 'routing-controllers';
 import {UserService} from "../services/UserService";
 import {Service} from "typedi";
 import {User} from "../models/User";
-import {IsNotEmpty} from "class-validator";
+import {IsNotEmpty, IsPositive} from "class-validator";
 
 export class CreateUserBody {
     @IsNotEmpty()
@@ -11,7 +11,7 @@ export class CreateUserBody {
     @IsNotEmpty()
     public lastname: string;
 
-    @IsNotEmpty()
+    @IsPositive()
     public age: number;
 }
 
