@@ -4,23 +4,37 @@ Best current practice of TypeScript-based Express web framework.
 
 # Quickstart
 
-Install dependencies
+1. Install dependencies
 
 ```shell
 yarn install
 ```
 
-Build project to `dist`
+2. Duplicate `.env.example` as `.env` and configure environment variables
+
+3. Build project to `dist`
 
 ```shell
 npm run build
 ```
 
-Start built project
+4. Run project
 
 ```shell
 npm run start
 ```
+
+# Development
+
+## Create new models
+
+Refer to `User.ts` to create new models in folder `src/models`
+
+## Create new controllers
+
+Refer to `UserController.ts` to create new controllers in folder `src/controllers`
+
+## Run in dev
 
 Run project in development server
 
@@ -28,8 +42,9 @@ Run project in development server
 npm run dev
 ```
 
-Run code analysis
+## Run code analysis
 
 ```shell
 npm run lint
 ```
+

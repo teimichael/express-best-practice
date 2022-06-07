@@ -1,13 +1,13 @@
 import 'reflect-metadata';
 
-import {createExpressServer} from 'routing-controllers';
-import {UserController} from './controllers/UserController';
+import {createExpressServer, useContainer as routingUseContainer} from 'routing-controllers';
 import {Application} from "express";
-import { useContainer as classValidatorUseContainer } from 'class-validator';
-import { useContainer as routingUseContainer } from 'routing-controllers';
-import { Container } from 'typedi';
+import {useContainer as classValidatorUseContainer} from 'class-validator';
+import {Container} from 'typedi';
 import {env} from "./env";
+import path from "path";
 
+// Set typedi container for routing-controllers and class-validator
 routingUseContainer(Container);
 classValidatorUseContainer(Container, {
     fallback: true,
@@ -18,7 +18,7 @@ classValidatorUseContainer(Container, {
 const app: Application = createExpressServer({
     cors: true,
     classTransformer: true,
-    controllers: [UserController], // we specify controllers we want to use
+    controllers: [path.join(__dirname + '/controllers/*.js')],
 });
 
 app.listen(env.app.port);

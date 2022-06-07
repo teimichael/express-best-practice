@@ -1,5 +1,6 @@
 import {DataSource} from "typeorm";
 import {env} from "./env";
+import path from "path";
 
 const AppDataSource = new DataSource({
     type: env.db.type as "mysql" | "postgres" | "mariadb" | "sqlite",
@@ -8,7 +9,7 @@ const AppDataSource = new DataSource({
     username: env.db.username,
     password: env.db.password,
     database: env.db.database,
-    entities: env.db.entities,
+    entities: [path.join(__dirname + '/models/*.js')],
     synchronize: env.db.synchronize,
     logging: env.db.logging,
     logger: env.db.logger as "advanced-console" | "simple-console" | "file" | "debug"
