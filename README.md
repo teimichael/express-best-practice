@@ -56,3 +56,4 @@ npm run lint
 - [routing-controllers](https://github.com/typestack/routing-controllers)
 - [TypeORM](https://typeorm.io/)
 - [TypeDI](https://github.com/typestack/typedi)
+- [winston](https://github.com/winstonjs/winston)

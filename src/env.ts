@@ -12,6 +12,7 @@ export const env = {
         controllers: process.env.APP_CONTROLLER_PATH || ''
     },
     log: {
+        dir: process.env.LOG_DIR || 'log',
         format: process.env.LOG_FORMAT || 'common'
     },
     db: {

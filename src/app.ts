@@ -10,6 +10,7 @@ import * as swaggerUi from 'swagger-ui-express';
 import {routingControllersToSpec} from "routing-controllers-openapi";
 import {validationMetadatasToSchemas} from "class-validator-jsonschema";
 import morgan from "morgan";
+import {logger, stream} from "./logger";
 
 class App {
     private app: Application
@@ -25,15 +26,22 @@ class App {
         this.initializeSwagger();
     }
 
+    /**
+     * Run application
+     */
     public run() {
         this.app.listen(env.app.port, () => {
-            console.info(`🚀 App listening on the port ${env.app.port}`);
+            logger.info(`🚀 App is running on port ${env.app.port}`);
         });
     }
 
+    /**
+     * Initialize core settings
+     * @private
+     */
     private initializeCore() {
         // Initialize logging
-        this.app.use(morgan(env.log.format));
+        this.app.use(morgan(env.log.format, { stream }));
 
         // Set TypeDI container for routing-controllers and class-validator
         routingUseContainer(Container);
@@ -45,6 +53,7 @@ class App {
 
     /**
      * Initialize Swagger UI
+     * @private
      */
     private initializeSwagger() {
         const storage = getMetadataArgsStorage()
