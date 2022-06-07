@@ -2,7 +2,7 @@ import {existsSync, mkdirSync} from 'fs';
 import {join} from 'path';
 import winston from 'winston';
 import 'winston-daily-rotate-file';
-import {env} from "./env";
+import {env} from "./common/env";
 
 const logDir: string = join(__dirname, env.log.dir);
 

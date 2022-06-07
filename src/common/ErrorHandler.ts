@@ -3,7 +3,7 @@ import {Service} from "typedi";
 import {NextFunction, Request, Response} from "express";
 import {env} from "./env";
 import {ValidationError} from "json-schema";
-import {logger} from "./logger";
+import {logger} from "../logger";
 
 type ErrResponse = {
     name?: string

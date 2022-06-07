@@ -4,14 +4,14 @@ import {createExpressServer, getMetadataArgsStorage, useContainer as routingUseC
 import {Application} from "express";
 import {useContainer as classValidatorUseContainer} from 'class-validator';
 import {Container} from 'typedi';
-import {env} from "./env";
+import {env} from "./common/env";
 import path from "path";
 import * as swaggerUi from 'swagger-ui-express';
 import {routingControllersToSpec} from "routing-controllers-openapi";
 import {validationMetadatasToSchemas} from "class-validator-jsonschema";
 import morgan from "morgan";
 import {logger, stream} from "./logger";
-import {ErrorHandler} from "./ErrorHandler";
+import {ErrorHandler} from "./common/ErrorHandler";
 
 class App {
     private app: Application

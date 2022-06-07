@@ -1,5 +1,5 @@
 import {DataSource} from "typeorm";
-import {env} from "./env";
+import {env} from "./common/env";
 import path from "path";
 
 const AppDataSource = new DataSource({
