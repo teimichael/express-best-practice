@@ -48,3 +48,11 @@ npm run dev
 npm run lint
 ```
 
+---
+
+# References
+
+- [Express](https://expressjs.com/)
+- [routing-controllers](https://github.com/typestack/routing-controllers)
+- [TypeORM](https://typeorm.io/)
+- [TypeDI](https://github.com/typestack/typedi)
