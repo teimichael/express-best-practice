@@ -34,6 +34,7 @@ const logger = winston.createLogger({
             json: false,
             zippedArchive: true,
         }),
+
         // Error log setting
         new winston.transports.DailyRotateFile({
             level: 'error',
@@ -48,6 +49,16 @@ const logger = winston.createLogger({
     ],
 });
 
+if (env.debug) {
+    logger.add(
+        new winston.transports.Console({
+            handleExceptions: true,
+            level: 'error'
+        })
+    );
+}
+
+// Print to console if debugging
 logger.add(
     new winston.transports.Console({
         format: winston.format.combine(winston.format.splat(), winston.format.colorize()),

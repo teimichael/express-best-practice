@@ -1,6 +1,7 @@
 import {DataSource} from "typeorm";
 import {env} from "./common/env";
 import path from "path";
+import {logger} from "./logger";
 
 const AppDataSource = new DataSource({
     type: env.db.type as "mysql" | "postgres" | "mariadb" | "sqlite",
@@ -17,7 +18,7 @@ const AppDataSource = new DataSource({
 
 AppDataSource.initialize()
     .then(() => {
-        console.log("Initialized database.")
+        logger.debug("Initialized database.")
     })
     .catch((error) => console.log(error))
 
